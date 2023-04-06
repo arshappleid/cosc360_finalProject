@@ -45,32 +45,32 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `store` (
-  `id` NUMBER PRIMARY KEY,
+  `id` INTEGER PRIMARY KEY,
   `name` varchar(255) NOT NULL,
-  `img_url` varchar(255) NOT NULL,
+  `img_url` varchar(255) NOT NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `item` (
-  `id` NUMBER PRIMARY KEY,
-  `store_id` NUMBER NOT NULL,
+  `id` INTEGER AUTO_INCREMENT PRIMARY KEY,
+  `store_id` INTEGER NOT NULL,
   `item_name` varchar(255) NOT NULL,
-  `default_price` NUMBER NOT NULL,
-  `img_url` varchar(255) NOT NULL,
+  `default_price` INTEGER NOT NULL,
+  `img_url` varchar(255) NOT NULL
 
-  FOREIGN KEY (`store_id`) REFERENCES `store`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `price_change` (
-  `item_id` NUMBER PRIMARY KEY,
-  `change_in_price` NUMBER NOT NULL,
+  `item_id` INTEGER,
+  `change_in_price` INTEGER NOT NULL,
+  `DATE` Date NOT NULL,
 
   FOREIGN KEY (`item_id`) REFERENCES `item`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `comments` (
-  `id` NUMBER PRIMARY KEY,
-  `item_id` NUMBER NOT NULL,
+  `id` INTEGER AUTO_INCREMENT PRIMARY KEY,
+  `item_id` INTEGER NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `comment_str` varchar(255) NOT NULL,
   `date` DATE,

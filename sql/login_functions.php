@@ -31,6 +31,49 @@ function getData($sql_query)
 	}
 }
 
+function addData($sql_query)
+{
+	global $connection;
+	$error = mysqli_connect_error();
+	if ($error != null) {
+		return ("Unable to connect to database");
+	} else {
+		//good connection, so do you thing
+		// check if user exists 
+
+		$result = mysqli_query($connection, $sql_query);
+		if ($result >= 1 || $result == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	return false;
+}
+
+function deleteData($sql_query)
+{
+	global $connection;
+	$error = mysqli_connect_error();
+	if ($error != null) {
+		return ("Unable to connect to database");
+	} else {
+		//good connection, so do you thing
+		// check if user exists
+
+		$result = mysqli_query($connection, $sql_query);
+		if ($result >= 1 || $result == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	return false;
+}
+
+
+
+
 // Returns boolean if the user exists , in the users table.
 // We pass it the normally written password
 function validDateUser($username, $password)

@@ -1,11 +1,8 @@
 <?php
-require_once('./sql/login_functions.php');
-echo "Start";
-$sql = "select * from users";
-$response = validDateUser("test5", "test5");
-//        foreach ($response as $record){
-//            echo ($record['username']) . "<br>";
-//        }
 
-echo $response;
-echo "<br>Done";
+require_once('./sql/store.php');
+$resp= getProductInfo("eggs","2");
+echo print_r($resp);
+
+
+?>
