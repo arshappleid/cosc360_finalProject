@@ -8,6 +8,8 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="./scripts/checkLoginForm.js"></script>
 	<style>
 		body {
 			display: flex;
@@ -19,19 +21,12 @@
 			font-family: Arial, sans-serif;
 		}
 
-		form {
-			background-color: #f1f1f1;
-			border: 1px solid #ccc;
-			padding: 20px;
-			width: 300px;
-		}
 
 		input[type=text],
 		input[type=password] {
 			padding: 10px;
 			margin: 5px 0;
 			border: 1px solid #ccc;
-			width: 100%;
 		}
 
 		button {
@@ -40,7 +35,6 @@
 			padding: 10px 20px;
 			border: none;
 			cursor: pointer;
-			width: 100%;
 		}
 
 		button:hover {
@@ -63,40 +57,22 @@
 </head>
 
 <body>
-	<?php
-	$username = $password = "";
-	$usernameErr = $passwordErr = "";
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		if (empty($_POST["username"])) {
-			$usernameErr = "Username is required";
-		} else {
-			$username = $_POST["username"];
-		}
-
-		if (empty($_POST["password"])) {
-			$passwordErr = "Password is required";
-		} else {
-			$password = $_POST["password"];
-		}
-	}
-
-
-	?>
 	<div class="container text-center">
 		<h2>Login:</h2>
 
-		<form class="row d-flex justify-content-center" method="post" action="index.php">
-			<div>
+		<form class="" method="post" action="./scripts/validateLoginDb.php" id="mainForm">
+			<div class="col-md text-center">
 				<label for="username"><b>Username</b></label>
 				<input type="text" placeholder="Enter Username" name="username" required>
 				<span class="error"><?php echo $usernameErr; ?></span>
-
+				<br>
 				<label for="password"><b>Password</b></label>
 				<input type="password" placeholder="Enter Password" name="password" required>
 				<span class="error"><?php echo $passwordErr; ?></span>
 
-				<button type="submit" style="margin:5 rem 4rem ;">Login</button><br>
+				<br>
+				<button type="submit" style="margin:5 rem 4rem ;" onclick="ifEmptyTurnRed()">Login</button><br>
 				<button type="button" onclick="location.href='guest.php'">Continue as Guest</button><br>
 				<button type="reset" class="cancelbtn">Reset</button><br>
 			</div>

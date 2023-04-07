@@ -53,3 +53,17 @@ function getProductInfo($item_name , $store_id ){
     return $result[0];
 
 }
+
+function getStores(){
+    $resp = getData("SELECT * FROM store;");
+    $result = array();
+    foreach ($resp as $record){
+        array_push($result,$record);
+    }
+    return $result;
+}
+
+function getStoreInfo($store_id){
+    $resp = getData("SELECT * FROM store where id = '$store_id';");
+    return $resp[0];
+}
