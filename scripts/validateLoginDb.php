@@ -10,8 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if ($valid) {
 		// go to the Store
-		header("Location: ../views/pages/browse.php");
+		header("Location: ../views/pages/browse.php?user=$username");
 	} else {
 		// show an error message
+		header("Location: ../index.php");
 	}
 }
