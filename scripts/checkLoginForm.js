@@ -14,9 +14,6 @@ function ifEmptyTurnRed() {
 		}
 	}
 
-	
-
-	
 }
 
 document.getElementsByName("mainForm").onsubmit = function (e){

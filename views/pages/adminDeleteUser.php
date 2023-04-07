@@ -16,8 +16,10 @@
 	foreach ($users as $user) {
 		$username = $user['username'];
 		echo $user['username'];
-		echo " <a href = './../../scripts/deleteUser?username=$username'>Delete</a><br>";
+		echo " <a href = './../../scripts/deleteUser.php?username=$username'>Delete</a><br>";
 	}
+
+	echo "<br><a href = './../../index.php'>HOME</a>"
 	?>
 </body>
 

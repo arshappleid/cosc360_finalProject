@@ -1,4 +1,5 @@
 <?php
+echo "here";
 require_once("./../sql/login_functions.php");
 $username = $password = "";
 
@@ -16,3 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		header("Location: ./../views/pages/adminLogin.php?message=Invalid Login");
 	}
 }
+
+
+?>
+

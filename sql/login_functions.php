@@ -138,20 +138,9 @@ function addUser($firstname, $lastname, $email, $username, $password)
 
 function deleteUser($username)
 {
-
-	global $connection;
-	$error = mysqli_connect_error();
-	$sql_query = "DELETE FROM users WHERE username = '$username';";
-	if ($error != null) {
-		return ("Unable to connect to database");
-	} else {
-		//good connection, so do you thing
-		// check if user exists 
-
-		$result = mysqli_query($connection, $sql_query);
-		mysqli_free_result($result);
-		return true;
-	}
+    deleteData("DELETE FROM comments where user_name ='$username'");
+	deleteData("DELETE FROM users where username ='$username'");
+    echo "done";
 }
 
 function addAdmin($firstname, $lastname, $email, $username, $password)
