@@ -104,6 +104,12 @@ function validDateUser($username, $password)
 	}
 }
 
+function getAllUsers()
+{
+	$resp = getData("SELECT * FROM users;");
+	return $resp;
+}
+
 function addUser($firstname, $lastname, $email, $username, $password)
 {
 	$md5_hashed_paswd = md5($password);
@@ -127,6 +133,24 @@ function addUser($firstname, $lastname, $email, $username, $password)
 		} else {
 			return "User Already exists";
 		}
+	}
+}
+
+function deleteUser($username)
+{
+
+	global $connection;
+	$error = mysqli_connect_error();
+	$sql_query = "DELETE FROM users WHERE username = '$username';";
+	if ($error != null) {
+		return ("Unable to connect to database");
+	} else {
+		//good connection, so do you thing
+		// check if user exists 
+
+		$result = mysqli_query($connection, $sql_query);
+		mysqli_free_result($result);
+		return true;
 	}
 }
 

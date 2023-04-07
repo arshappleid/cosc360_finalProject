@@ -73,7 +73,7 @@
 
 		<form class=""
 			method="post"
-			action="./scripts/validateLoginDb.php"
+			action="./../../../scripts/validateAdminLogin.php"
 			id="mainForm">
 			<div class="col-md text-center">
 				<label for="username"><b>Username</b></label>
@@ -81,25 +81,20 @@
 					placeholder="Enter Username"
 					name="username"
 					required>
-				<span class="error"><?php echo $usernameErr; ?></span>
 				<br>
 				<label for="password"><b>Password</b></label>
 				<input type="password"
 					placeholder="Enter Password"
 					name="password"
 					required>
-				<span class="error"><?php echo $passwordErr; ?></span>
 
 				<br>
 				<button type="submit"
 					style="margin:5 rem 4rem ;"
 					onclick="ifEmptyTurnRed()">Login</button><br>
+
 				<button type="button"
-					onclick="location.href='./views/pages/browse.php?user=guest'">Continue as Guest</button><br>
-				<button type="button"
-					onclick="location.href='./views/pages/createAccount.php'">Create new Account</button><br>
-				<button type="button"
-					onclick="location.href='./views/pages/adminLogin.php'">Admin</button><br>
+					onclick="location.href='./../../index.php'">Home</button><br>
 				<br>
 				<button type="reset"
 					class="cancelbtn">Reset</button><br>
