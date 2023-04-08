@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -43,7 +44,7 @@
             $stores = getStores();
             foreach ($stores as $store) {
                 $user = $_GET['user'];
-                echo "<button onclick=\"location.href='?user=$user&test&store_id=" . $store['id'] . "'\">" . $store['name'] . "</button>";
+                echo "<button onclick=\"location.href='?user=$user&store_id=" . $store['id'] . "'\">" . $store['name'] . "</button>";
             }
             ?>
 
@@ -66,7 +67,11 @@
             echo "<div>";
             echo "<h4>Available items:</h4>";
             foreach (getItems($store_id) as $item) {
+                $itemid = $item['id'];
+
                 echo "<p>" . $item['item_name'] . " : " . $item['default_price'] . "$" . "</p>";
+
+
                 echo "Price History : ";
 
                 $prices = getPriceChanges($item['id']);
@@ -82,10 +87,12 @@
                 }
 
                 echo "<br>";
+                echo "<a href = './itemInfo.php?itemid=$itemid'>";
                 echo "<img style='width:10rem;height:10rem' src=" . $item['img_url'] . " alt=" . $item['item_name'] . ">";
+                echo "</a>";
                 echo "<br>";
 
-                if (count(getItemComments($item['id'])) >= 1) {
+                if (count(getItemComments($itemid)) >= 1) {
                     echo "<b>Comments : </b><br>";
                     foreach (getItemComments($item['id']) as $comment) {
                         echo $comment['user_name'] . " : ";

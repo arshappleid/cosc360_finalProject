@@ -1,3 +1,25 @@
+<?php session_start(); ?>
+<?php
+require_once("./../../sql/login_functions.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Get form data
+	$username = $_POST["username"];
+	$first_name = $_POST["first_name"];
+	$last_name = $_POST["last_name"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+
+	// Store data in database or do other processing
+	$message = addUser($first_name, $last_name, $email, $username, $password);
+	echo "<b>" . $message . "</b>";
+	// Redirect to success page
+	header("Location: ./../../index.php?message=User Added");
+	exit();
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -82,27 +104,7 @@
 
 
 
-	<?php
-	require_once("./../../sql/login_functions.php");
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		// Get form data
-		$username = $_POST["username"];
-		$first_name = $_POST["first_name"];
-		$last_name = $_POST["last_name"];
-		$email = $_POST["email"];
-		$password = $_POST["password"];
-
-		// Store data in database or do other processing
-		$message = addUser($first_name, $last_name, $email, $username, $password);
-		echo "<b>" . $message . "</b>";
-		// Redirect to success page
-		header("Location: ./../../index.php?message=User Added");
-		exit();
-	}
-
-
-	?>
 
 
 </body>

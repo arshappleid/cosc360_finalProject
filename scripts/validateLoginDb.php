@@ -10,6 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if ($valid) {
 		// go to the Store
+		session_start();
+		$_SESSION['username_logged_in'] = $username;
+		array_push($_SESSION['breadcrumb'], 'browse');
 		header("Location: ../views/pages/browse.php?user=$username");
 	} else {
 		// show an error message

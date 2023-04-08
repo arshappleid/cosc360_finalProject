@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 echo "here";
 require_once("./../sql/login_functions.php");
@@ -11,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if ($valid) {
 		// go to the Store
+		$_SESSION['username_logged_in'] = $username;
 		header("Location: ./../views/pages/adminDeleteUser.php");
 	} else {
 		// show an error message
@@ -20,4 +22,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 ?>
-
