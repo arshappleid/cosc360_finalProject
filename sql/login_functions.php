@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$database = "lab_9";
+$database = "project360";
 $user = "test";   // i created a new user using this login for the db
 $password = "password";
 
@@ -138,9 +138,9 @@ function addUser($firstname, $lastname, $email, $username, $password)
 
 function deleteUser($username)
 {
-    deleteData("DELETE FROM comments where user_name ='$username'");
+	deleteData("DELETE FROM comments where user_name ='$username'");
 	deleteData("DELETE FROM users where username ='$username'");
-    echo "done";
+	echo "done";
 }
 
 function addAdmin($firstname, $lastname, $email, $username, $password)

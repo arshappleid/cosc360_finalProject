@@ -1,7 +1,7 @@
 <?php
 require_once("login_functions.php");
 $host = "localhost";
-$database = "lab_9";
+$database = "project360";
 $user = "test";   // i created a new user using this login for the db
 $password = "password";
 

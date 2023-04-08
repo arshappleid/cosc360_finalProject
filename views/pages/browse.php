@@ -29,6 +29,17 @@
 		margin-right: 5%;
 
 	}
+
+	footer {
+		margin-top: 5%;
+		margin-right: 5%;
+		background-color: #f1f1f1;
+		position: sticky;
+		padding: 20px 0;
+		position: static;
+		margin-left: 20%;
+		bottom: 0;
+	}
 	</style>
 </head>
 
@@ -91,14 +102,18 @@
                 echo "<img style='width:10rem;height:10rem' src=" . $item['img_url'] . " alt=" . $item['item_name'] . ">";
                 echo "</a>";
                 echo "<br>";
-
-                if (count(getItemComments($itemid)) >= 1) {
-                    echo "<b>Comments : </b><br>";
-                    foreach (getItemComments($item['id']) as $comment) {
-                        echo $comment['user_name'] . " : ";
-                        echo $comment['comment_str'] . "<br>";
-                        echo "<br>";
+                try {
+                    $comments = getItemComments($itemid);
+                    if ($comments != null) {
+                        echo "<b>Comments : </b><br>";
+                        foreach (getItemComments($item['id']) as $comment) {
+                            echo $comment['user_name'] . " : ";
+                            echo $comment['comment_str'] . "<br>";
+                            echo "<br>";
+                        }
                     }
+                } catch (Exception $e) {
+                    echo "<br>";
                 }
                 echo "<br>";
             }
@@ -108,7 +123,34 @@
             echo "<h3>Please select a store</h3>";
         }
         ?>
+
+
+
 	</div>
+	<!--This is the footer-->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h4>About</h4>
+					<p>This grocery tracker app helps you keep track of your grocery list and expenses, making it
+						easy
+						to plan and stay on budget.</p>
+				</div>
+				<div class="col-md-4">
+					<h4>Contact</h4>
+					<ul>
+						<li>Email: grocerytracker@app.com</li>
+						<li>Phone: 123-456-7890</li>
+						<li>Address: Ubco Kelowna</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+
 </body>
 
 </html>
