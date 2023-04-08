@@ -4,6 +4,9 @@ Our grocery price tracker app, developed for the sample project on the Canvas we
 
 This project was only done by one person.
 
+Short demo of the project , since i was not able to upload it to the server :
+https://vimeo.com/815810432
+
 ### Features.
 - Grocery price tracker , as per average price over the week.
 	- If higher than average displays as red , else green.
